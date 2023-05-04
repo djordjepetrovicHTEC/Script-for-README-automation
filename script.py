@@ -1,6 +1,6 @@
 import requests
 
-url = "https://api.github.com/repos/USERNAME/REPO"
+url = "https://github.com/djordjepetrovicHTEC/Script-for-README-automation"
 
 headers = {
     "Authorization": "Bearer test",

@@ -24,7 +24,6 @@ env:
   SCRIPT_PATH: benchmark-utils
   RESULT_PATH: comparison-results
   TEST_ENV: test value
-  TEST_ENV2: test value2
 
 jobs:
   echo:

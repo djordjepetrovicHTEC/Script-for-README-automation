@@ -1,9 +1,9 @@
 name: Update README.md
 
 on:
+  push:
+    branches: [ main ]
   workflow_dispatch:
-  env:
-    types: [created]
 
 jobs:
   update-readme:

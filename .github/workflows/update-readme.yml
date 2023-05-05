@@ -1,9 +1,9 @@
-name: Update README.md
+name: Update README
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
   update-readme:
@@ -12,20 +12,31 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Update README.md
-        uses: crazy-max/ghaction-github-pages@v2.4.4
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          build_dir: ./
-          target_branch: main
-          commit_message: Update README.md
-          commit_user_name: GitHub Actions
-          commit_user_email: actions@github.com
-          custom_domain: ""
+          node-version: '14.x'
 
-      - name: Create pull request
-        uses: peter-evans/create-pull-request@v3.11.1
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build and update README
+        run: npm run build-readme
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v3.6.0
         with:
+          target_branch: gh-pages
+          build_dir: ./docs
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3.20.0
+        with:
+          commit-message: Update README
+          title: Update README
           branch: update-readme
-          commit-message: Update README.md
-          title: Update README.md
-          body: "This pull request updates the README.md file to include the new environment variable added to the workflow."
+          body: |
+            This PR updates the README file.
+          token: ${{ secrets.GITHUB_TOKEN }}

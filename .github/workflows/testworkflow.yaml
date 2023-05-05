@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  workflow_call:
+    inputs:
+      rocm_version:
+        type: string
+        description: ROCm release version
+        required: true
+      script_repo:
+        type: string
+        description: Script repository
+        required: false
+      result_path:
+        type: string
+        description: Result Path
+        required: false
+      result_repo:
+        type: string
+        description: Result repository
+        required: false
+
+env:
+  SCRIPT_PATH: benchmark-utils
+  RESULT_PATH: comparison-results

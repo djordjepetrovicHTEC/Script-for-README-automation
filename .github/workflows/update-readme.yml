@@ -19,7 +19,7 @@ jobs:
           target_branch: main
           commit_message: Update README.md
         env:
-          GH_PAT: ${{ secrets.TEST_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TEST_TOKEN }}
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v5.0.1
@@ -28,3 +28,5 @@ jobs:
           commit-message: Update README.md
           title: Update README.md
           body: "This pull request updates the README.md file to include new inputs/env variables added to the workflow."
+        env:
+          GITHUB_TOKEN: ${{ secrets.TEST_TOKEN }}

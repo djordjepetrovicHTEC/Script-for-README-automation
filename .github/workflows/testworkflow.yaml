@@ -24,3 +24,10 @@ env:
   SCRIPT_PATH: benchmark-utils
   RESULT_PATH: comparison-results
   TEST_ENV: test value
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo some text
+        run: echo "Hello, world!"

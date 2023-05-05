@@ -1,0 +1,31 @@
+name: Update README.md
+
+on:
+  workflow_dispatch:
+  env:
+    types: [created]
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Update README.md
+        uses: crazy-max/ghaction-github-pages@v2.4.4
+        with:
+          build_dir: ./
+          target_branch: main
+          commit_message: Update README.md
+          commit_user_name: GitHub Actions
+          commit_user_email: actions@github.com
+          custom_domain: ""
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v3.11.1
+        with:
+          branch: update-readme
+          commit-message: Update README.md
+          title: Update README.md
+          body: "This pull request updates the README.md file to include the new environment variable added to the workflow."

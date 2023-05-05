@@ -2,41 +2,31 @@ name: Update README
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Update README
+        uses: jamesgeorge007/github-README-template@v1.0
         with:
-          node-version: '14.x'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build and update README
-        run: npm run build-readme
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v3.6.0
-        with:
-          target_branch: gh-pages
-          build_dir: ./docs
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3.20.0
+          README_PATH: ./README.md
+          TEMPLATE_PATH: ./README_template.md
+      - name: Push changes
+        uses: peter-evans/create-pull-request@v4.12.0
         with:
           commit-message: Update README
-          title: Update README
           branch: update-readme
-          body: |
-            This PR updates the README file.
+          title: Update README
+          body: Automated README update
+          branch-suffix: timestamp
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v4.2.0
+        with:
+          build_dir: ./build
           token: ${{ secrets.GITHUB_TOKEN }}

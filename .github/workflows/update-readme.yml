@@ -1,32 +1,28 @@
-name: Update README
+name: Update README.md
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Update README
-        uses: jamesgeorge007/github-README-template@v1.0
+
+      - name: Update README.md
+        uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
-          README_PATH: ./README.md
-          TEMPLATE_PATH: ./README_template.md
-      - name: Push changes
-        uses: peter-evans/create-pull-request@v4.12.0
+          build_dir: ./
+          target_branch: main
+          commit_message: Update README.md
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v5.0.1
         with:
-          commit-message: Update README
           branch: update-readme
-          title: Update README
-          body: Automated README update
-          branch-suffix: timestamp
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v4.2.0
-        with:
-          build_dir: ./build
-          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update README.md
+          title: Update README.md
+          body: "This pull request updates the README.md file to include new inputs/env variables added to the workflow."

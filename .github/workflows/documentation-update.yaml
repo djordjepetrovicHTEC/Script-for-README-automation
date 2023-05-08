@@ -18,9 +18,5 @@ jobs:
           python-version: 3.11  
 
       - name: Run Python script
-        run: |
-          pwd
-          ls
-          echo "TEST"
-        #  python ../script.py
+        run: python script.py
         

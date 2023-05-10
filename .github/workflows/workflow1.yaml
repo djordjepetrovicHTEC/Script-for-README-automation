@@ -27,6 +27,7 @@ on:
 env:
   SCRIPT_PATH: benchmark-utils
   RESULT_PATH: comparison-results
+  TEST_ENV: test-test
 
 jobs:
   check_image_version:

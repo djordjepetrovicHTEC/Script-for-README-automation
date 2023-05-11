@@ -1,1 +1,2 @@
-print("This is text from test script")
+with open('README.md', 'a') as readme_file:
+    readme_file.write('test\n')

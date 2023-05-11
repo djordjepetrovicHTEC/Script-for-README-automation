@@ -2,7 +2,7 @@ import os
 import re
 import yaml
 
-README_FILE = 'README.md'
+README_FILE = '.github/workflows/README.md'
 WORKFLOW_FILES = ['workflow1.yaml', 'workflow2.yaml']
 
 SECTION_PATTERN = re.compile(r'## `(.+?)`', re.DOTALL)

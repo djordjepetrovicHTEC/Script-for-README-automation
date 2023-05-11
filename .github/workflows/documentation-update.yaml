@@ -29,7 +29,7 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add README.md
+          git add .github/workflows/README.md
           git commit -m "test v1"
           git push
         

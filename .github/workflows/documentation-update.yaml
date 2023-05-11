@@ -23,7 +23,7 @@ jobs:
           pip install pyyaml
 
       - name: Run Python script
-        run: python test.py
+        run: python script.py
 
       - name: Commit changes
         run: |

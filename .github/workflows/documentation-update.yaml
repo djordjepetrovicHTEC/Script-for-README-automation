@@ -23,5 +23,13 @@ jobs:
           pip install pyyaml
 
       - name: Run Python script
-        run: python script.py
+        run: python test.py
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add README.md
+          git commit -m "test v1"
+          git push
         

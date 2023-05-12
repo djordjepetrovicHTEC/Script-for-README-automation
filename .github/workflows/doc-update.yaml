@@ -25,11 +25,14 @@ jobs:
       - name: Run Python script
         run: python script.py
 
+      - name: Check git status
+        run: git status
+
       - name: Commit changes
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add .github/workflows/README.md
+          git add .
           git commit -m "test v1"
           git push
         

@@ -23,7 +23,7 @@ jobs:
           pip install pyyaml
 
       - name: Run Python script
-        run: python script.py
+        run: python script1.py
 
       - name: Check git status
         run: git status

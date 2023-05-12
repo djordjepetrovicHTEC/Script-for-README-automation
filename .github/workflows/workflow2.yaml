@@ -41,6 +41,7 @@ env:
   UTILS_DIR: benchmark-utils
   REPORTS_DIR: migraphx-reports
   REPORTS_PATH: /usr/share/migraphx/${{ inputs.organization }}/reports
+  TEST_ENV1: test-test1
 
 jobs:
   performance_test:

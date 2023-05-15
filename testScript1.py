@@ -8,7 +8,7 @@ current_directory = os.getcwd()
 workflow_file_path = os.path.join(current_directory, ".github", "workflows", "testWorkflow1.yaml")
 
 # Specify the path to the README.md file relative to the current directory
-readme_file_path = os.path.join(current_directory, "README.md")
+readme_file_path = os.path.join(current_directory, ".github", "workflows", "README.md")
 
 # Read the contents of the testWorkflow1.yaml file
 with open(workflow_file_path, 'r') as workflow_file:

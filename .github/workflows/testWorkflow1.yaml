@@ -9,6 +9,7 @@ env:
   TEST_ENV1: test-test1
   TEST_ENV2: test-test2
   TEST_ENV3: test-test3
+  TEST_ENV4: test-test4
 
 jobs:
   test:

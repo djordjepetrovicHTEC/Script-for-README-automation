@@ -21,8 +21,6 @@ prev_version_output = os.popen(prev_version_command).read().splitlines()
 # Find the differences between the previous and current versions of the testWorkflow1.yaml file
 diff = difflib.unified_diff(prev_version_output, workflow_contents, lineterm='', n=0)
 
-print(diff)
-
 # Filter out the lines that were present in the previous version
 filtered_diff = [line for line in diff if line.startswith('+')]
 

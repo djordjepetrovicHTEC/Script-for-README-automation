@@ -20,7 +20,9 @@ def format_variable(var_name, description):
 
 def update_readme(content, workflow_name, new_vars):
     pattern = fr'(## `{workflow_name}`.*?Environment Variables\n.*?)(?:\n\n- `.*?`)*\n'
-    replace_text = f'\\1\n' + '\n'.join(new_vars) + '\n'
+    #replace_text = f'\\1\n' + '\n'.join(new_vars) + '\n'
+    replace_text = f'\\1\n' + '\\n'.join(new_vars) + '\\n'
+
     updated_content = re.sub(pattern, replace_text, content, flags=re.DOTALL)
     return updated_content
 

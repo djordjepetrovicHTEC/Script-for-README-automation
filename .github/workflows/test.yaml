@@ -1,8 +1,6 @@
-name: Python Script Workflow 1
+name: Test workflow
 
 on:
-  #schedule:
-  #  - cron: "*/15 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -24,7 +22,7 @@ jobs:
           pip install pyyaml
 
       - name: Run Python script
-        run: python script4.py
+        run: python testScript.py
 
       - name: Commit changes
         run: |

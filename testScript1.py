@@ -15,7 +15,7 @@ with open(workflow_file_path, 'r') as workflow_file:
     workflow_contents = workflow_file.readlines()
 
 # Read the previous version of the testWorkflow1.yaml file from the git history
-prev_version_command = f"git diff {workflow_file_path}"
+prev_version_command = f"git show HEAD~1:{workflow_file_path}"
 prev_version_output = os.popen(prev_version_command).read().splitlines()
 
 # Find the differences between the previous and current versions of the testWorkflow1.yaml file

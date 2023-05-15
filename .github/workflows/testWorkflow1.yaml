@@ -8,6 +8,7 @@ on:
 env:
   TEST_ENV1: test-test1
   TEST_ENV2: test-test2
+  TEST_ENV3: test-test3
 
 jobs:
   test:

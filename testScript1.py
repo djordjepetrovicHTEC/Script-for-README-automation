@@ -21,6 +21,9 @@ prev_version_output = os.popen(prev_version_command).read().splitlines()
 # Find the differences between the previous and current versions of the testWorkflow1.yaml file
 diff = difflib.unified_diff(prev_version_output, workflow_contents, lineterm='', n=0)
 
-# Append the differences to the README.md file
+# Filter out the lines that were present in the previous version
+filtered_diff = [line for line in diff if line.startswith('+')]
+
+# Append the filtered differences to the README.md file
 with open(readme_file_path, 'a') as readme_file:
-    readme_file.write('\n'.join(diff))
+    readme_file.write('\n'.join(filtered_diff))

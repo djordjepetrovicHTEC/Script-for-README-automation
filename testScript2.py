@@ -10,14 +10,17 @@ workflow_file_path = os.path.join(current_directory, ".github", "workflows", "te
 # Specify the path to the README.md file relative to the current directory
 readme_file_path = os.path.join(current_directory, ".github", "workflows", "README.md")
 
-# Read the diff of the last commit that modified the testWorkflow1.yaml file
-diff_command = f"git diff HEAD^ -- {workflow_file_path}"
-diff_output = os.popen(diff_command).read().splitlines()
+# Read the contents of the testWorkflow1.yaml file
+with open(workflow_file_path, 'r') as workflow_file:
+    workflow_contents = workflow_file.readlines()
 
-# Filter out the lines representing additions from the diff output
-added_lines = [line[1:] for line in diff_output if line.startswith('+') and not line.startswith('+++')]
+# Read the previous version of the testWorkflow1.yaml file from the git history
+prev_version_command = f"git show HEAD~1:{workflow_file_path}"
+prev_version_output = os.popen(prev_version_command).read().splitlines()
 
-# Append each added line to the README.md file
+# Find the newly added lines in the testWorkflow1.yaml file
+new_lines = [line for line in workflow_contents if line not in prev_version_output]
+
+# Append the newly added lines to the README.md file
 with open(readme_file_path, 'a') as readme_file:
-    for line in added_lines:
-        readme_file.write(line + '\n')
+    readme_file.write('\n'.join(new_lines))

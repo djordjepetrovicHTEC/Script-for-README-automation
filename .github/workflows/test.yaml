@@ -24,7 +24,7 @@ jobs:
           pip install pyyaml
 
       - name: Run Python script
-        run: python testScript1.py
+        run: python testScript2.py
 
       - name: Commit changes
         run: |

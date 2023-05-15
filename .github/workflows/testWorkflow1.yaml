@@ -13,6 +13,7 @@ env:
   TEST_ENV5: test-test5
   TEST_ENV6: test-test6
   TEST_ENV7: test-test7
+  TEST_ENV8: test-test8
 
 jobs:
   test:
